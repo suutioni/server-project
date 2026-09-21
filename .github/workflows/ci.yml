@@ -35,3 +35,30 @@ jobs:
 
       - name: Build Docker image
         run: docker build -t server-project .
+
+
+  opentofu-check:
+    runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        working-directory: infra
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v7
+
+      - name: Set up OpenTofu
+        uses: opentofu/setup-opentofu@v2.0.2
+        with:
+          tofu_version: "1.12.6"
+
+
+      - name: Check formatting
+        run: tofu fmt -check
+
+      - name: Initialize OpenTofu
+        run: tofu init
+
+      - name: Validate OpenTofu
+        run: tofu validate
