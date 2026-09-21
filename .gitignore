@@ -1,0 +1,14 @@
+.env
+
+__pycache__/
+*.py[cod]
+
+.venv/
+.pytest_cache/
+
+# OpenTofu / Terraform
+.terraform/
+*.tfstate
+*.tfstate.*
+*.tfvars
+*.tfvars.json
