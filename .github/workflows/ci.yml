@@ -24,3 +24,14 @@ jobs:
 
       - name: Check Python syntax
         run: python -m compileall app
+
+
+  docker-build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v7
+
+      - name: Build Docker image
+        run: docker build -t server-project .
